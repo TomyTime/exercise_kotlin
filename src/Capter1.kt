@@ -101,21 +101,37 @@ class Capater1(){
     }
 
     /**
-     * @TODO 算法有误
+     * 模拟随机扔两个骰子
      */
-    fun random_num(min:Int, max:Int):Int{
-        var array:Array<Int> = Array(2){-1}
+    fun random_num(min:Int, max:Int):Array<Int>{
+        var array:Array<Int> = Array(2){-99999}
+
         while(array[0] + array[1] < 2){
             var num = (Math.random()*(max-min+1)).toInt()
             if(num >= min && num <= max){
-                if(array[0] === -1) array[0] = num
+                if(array[0] === -99999) array[0] = num
                 else array[1] = num
             }
         }
-        for(i in 0..1){
-            println(array[i])
+
+        return array
+    }
+
+    /**
+     * 打印数组
+     */
+    fun print_array(ary: Array<Int>):Unit{
+        for(i in 0..ary.size-1){
+            print(ary[i])
+            print("  ")
         }
-        return 1
+    }
+
+    fun throw_dice(N:Int):Unit{
+        for(i in 0..N){
+            var result:Array<Int> = random_num(1, 6)
+            print_array(result)
+        }
     }
 
     fun q_1_1_35(N:Int):Unit{
@@ -148,5 +164,5 @@ fun main(args: Array<String>) {
 //    println(apple.exR1(6))
 //    apple.binomial(100, 50, 0.25)
 //    apple.q_1_1_35(0)
-    apple.random_num(1, 6)
+    apple.throw_dice(6)
 }
