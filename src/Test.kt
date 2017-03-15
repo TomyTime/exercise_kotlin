@@ -72,6 +72,7 @@ class Capater1(){
 
     /**
      * 非递归计算二项式分布
+     * 来源: http://frankorz.com/wiki/chapter1/1.1.html
      * 使用一个二维数组来存放各项二项分布的概率
      * 行代表重复N次试验，列代表发生k次，所以在下面循环条件中需要 j<=i
      */
@@ -99,6 +100,44 @@ class Capater1(){
         return array
     }
 
+    /**
+     * @TODO 算法有误
+     */
+    fun random_num(min:Int, max:Int):Int{
+        var array:Array<Int> = Array(2){-1}
+        while(array[0] + array[1] < 2){
+            var num = (Math.random()*(max-min+1)).toInt()
+            if(num >= min && num <= max){
+                if(array[0] === -1) array[0] = num
+                else array[1] = num
+            }
+        }
+        for(i in 0..1){
+            println(array[i])
+        }
+        return 1
+    }
+
+    fun q_1_1_35(N:Int):Unit{
+        val SIDES:Int = 6
+        var dist:Array<Double> = Array(2*SIDES+1){0.0}
+
+        for(i in 1..SIDES){
+            for(j in 1..SIDES){
+                dist[i+j] += 1.0
+            }
+        }
+
+        for(k in 2..2*SIDES){
+            dist[k] /= 36.0
+        }
+
+        for(i in 2..(2*SIDES)){
+            print(dist[i])
+            print("  ")
+        }
+    }
+
 }
 
 fun main(args: Array<String>) {
@@ -107,5 +146,7 @@ fun main(args: Array<String>) {
 //    apple.answer_1_1_9()
 //    apple.answer_1_1_14(8)
 //    println(apple.exR1(6))
-    apple.binomial(100, 50, 0.25)
+//    apple.binomial(100, 50, 0.25)
+//    apple.q_1_1_35(0)
+    apple.random_num(1, 6)
 }
