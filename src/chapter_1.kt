@@ -107,7 +107,7 @@ class Capater1(){
         var array:Array<Int> = Array(2){-99999}
 
         while(array[0] + array[1] < 2){
-            var num = (Math.random()*(max-min+1)).toInt()
+            var num = (Math.random()*(max-min+2)).toInt()
             if(num >= min && num <= max){
                 if(array[0] === -99999) array[0] = num
                 else array[1] = num
@@ -127,7 +127,7 @@ class Capater1(){
         }
     }
 
-    fun throw_dice(N:Int):Unit{
+    fun roll(N:Int):Unit{
         for(i in 0..N){
             var result:Array<Int> = random_num(1, 6)
             print_array(result)
@@ -154,6 +154,46 @@ class Capater1(){
         }
     }
 
+    fun answer_1_2_4():Unit{
+        var string1:String = "hello"
+        var string2:String = string1
+        string1 = "world"
+
+        println(string1)
+        println(string2)
+    }
+
+    fun circular_rotation(a:String, b:String):Boolean{
+        var isCircularRatation:Boolean = false
+        println(a.length)
+        for(i in 0..(a.length)){
+            println(i)
+            /*while(b.indexOf(a[i]) > -1){
+                print("_$i = ")
+                println(a[i])
+                val left = b.substring(0, 2)
+                val right = b.substring(2)
+                val c = right + left
+                val d = left + right
+                println("left = $left")
+                println("right = $right")
+                println("a = $a")
+                println("b = $b")
+                println("c = $c")
+                println("d = $d")
+                if(a.equals(d) || b.equals(c)){
+                    isCircularRatation = true
+                    break
+                }
+            }*/
+            if(isCircularRatation === true){
+                break
+            }
+        }
+
+        return isCircularRatation
+    }
+
 }
 
 fun main(args: Array<String>) {
@@ -164,5 +204,7 @@ fun main(args: Array<String>) {
 //    println(apple.exR1(6))
 //    apple.binomial(100, 50, 0.25)
 //    apple.q_1_1_35(0)
-    apple.throw_dice(6)
+//    apple.roll(6)
+//    apple.answer_1_2_4()
+    apple.circular_rotation("ACTGACT", "TGACTAC")
 }
