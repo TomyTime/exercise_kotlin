@@ -1,3 +1,5 @@
+import org.omg.CORBA.Object
+
 /**
  * Created by TomyTime on 2017/3/15.
  */
@@ -164,37 +166,30 @@ class Capater1(){
     }
 
     fun circular_rotation(a:String, b:String):Boolean{
-        var isCircularRatation:Boolean = false
-        println(a.length)
-        for(i in 0..(a.length)){
-            println(i)
-            /*while(b.indexOf(a[i]) > -1){
-                print("_$i = ")
-                println(a[i])
-                val left = b.substring(0, 2)
-                val right = b.substring(2)
-                val c = right + left
-                val d = left + right
-                println("left = $left")
-                println("right = $right")
-                println("a = $a")
-                println("b = $b")
-                println("c = $c")
-                println("d = $d")
-                if(a.equals(d) || b.equals(c)){
-                    isCircularRatation = true
-                    break
-                }
-            }*/
-            if(isCircularRatation === true){
-                break
-            }
+        val c = a + a
+        println(c.indexOf(b))
+        if(c.indexOf(b) > -1){
+            return false
         }
-
-        return isCircularRatation
+        return true
     }
 
 }
+
+/*class ResizinngArrayStack<T>:Iterator<T> {
+    constructor(){}
+    val N:Int = 1
+//    val items:Array<T>
+    override fun hasNext():Boolean{
+        return false
+    }
+
+    override fun next():T{
+       return T
+    }
+
+
+}*/
 
 fun main(args: Array<String>) {
     val apple = Capater1()
